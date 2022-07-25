@@ -31,32 +31,29 @@ def home():
                             avg_ratings = [round(i, 2) for i in list(popular_books['Avg-Ratings'].values)]
                             )
 
-
-@app.route('/recommendation')
-def recommendation():
-    return render_template('recommend.html')
-
-
-@app.route('/recommend_book', methods=['POST'])
+@app.route('/recommend_book', methods=['GET', 'POST'])
 def recommend_book():
-    user_input = request.form.get('recommend_books')
+    if request.method == 'POST':
+        user_input = request.form.get('recommend_books')
 
-    recommended_books = []
-    
-    index = list(pt.index).index(user_input)
-    similar_books = sorted(list(enumerate(similarity_score[index])), key=lambda x:x[1], reverse=True)[1:6]
-    
-    for book in similar_books:
-        item = {}
-        temp_df = books[books['Book-Title'] == pt.index[book[0]]].drop_duplicates('Book-Title')
-        item['Book_Name'] = temp_df['Book-Title'].iloc[0]
-        item['Book_Author'] = temp_df['Book-Author'].iloc[0]
-        item['Image_URL'] = temp_df['Image-URL-M'].iloc[0]
-        item['Book_Ratings'] = round(avg_ratings[avg_ratings['Book-Title'] == pt.index[book[0]]]['Avg-Ratings'].iloc[0], 2)
+        recommended_books = []
         
-        recommended_books.append(item)
+        index = list(pt.index).index(user_input)
+        similar_books = sorted(list(enumerate(similarity_score[index])), key=lambda x:x[1], reverse=True)[1:6]
+        
+        for book in similar_books:
+            item = {}
+            temp_df = books[books['Book-Title'] == pt.index[book[0]]].drop_duplicates('Book-Title')
+            item['Book_Name'] = temp_df['Book-Title'].iloc[0]
+            item['Book_Author'] = temp_df['Book-Author'].iloc[0]
+            item['Image_URL'] = temp_df['Image-URL-M'].iloc[0]
+            item['Book_Ratings'] = round(avg_ratings[avg_ratings['Book-Title'] == pt.index[book[0]]]['Avg-Ratings'].iloc[0], 2)
+            
+            recommended_books.append(item)
 
-    return render_template('recommend.html', user_input = user_input, recommended_books=recommended_books)
+        return render_template('recommend.html', user_input = user_input, recommended_books=recommended_books)
+
+    return render_template('recommend.html')
 
 
 if __name__ == '__main__':
