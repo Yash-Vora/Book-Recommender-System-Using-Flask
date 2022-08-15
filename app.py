@@ -23,6 +23,7 @@ with open('avg_ratings.pkl', 'rb') as f:
 app = Flask(__name__)
 
 
+# This page shows popular 100 books
 @app.route('/')
 def home():
     return render_template('index.html',
@@ -33,6 +34,7 @@ def home():
                             avg_ratings = [round(i, 2) for i in list(popular_books['Avg-Ratings'].values)]
                             )
 
+# This page shows 5 similar books for the book searched by user
 @app.route('/recommend_book', methods=['GET', 'POST'])
 def recommend_book():
     if request.method == 'POST':
