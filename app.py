@@ -2,6 +2,7 @@ from flask import Flask, render_template, request
 import pickle
 
 
+# Load model and other csv files
 with open('popular_books.pkl', 'rb') as f:
     popular_books = pickle.load(f)
 
@@ -18,7 +19,8 @@ with open('avg_ratings.pkl', 'rb') as f:
     avg_ratings = pickle.load(f)
 
 
-app = Flask('__main__')
+# Initialize flask app
+app = Flask(__name__)
 
 
 @app.route('/')
@@ -57,4 +59,4 @@ def recommend_book():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()

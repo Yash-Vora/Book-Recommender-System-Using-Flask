@@ -1,5 +1,5 @@
 # Book Recommender System Using Flask
-This is recommendation system that recommend books. Following methods are used for recommending books.Flask framework is used for developing web application.
+This is Book Recommender System made using Flask Framework that is used to recommend books. Also deployed flask app on heroku.
 
 ## Popularity based Recommendation System
 This recommendation system is used to show top 100 popular books.<br>
