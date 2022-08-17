@@ -42,7 +42,7 @@ def recommend_book():
 
         recommended_books = []
         
-        index = list(pt.index).index(user_input)
+        index = list(pt.index).index(user_input.lower())
         similar_books = sorted(list(enumerate(similarity_score[index])), key=lambda x:x[1], reverse=True)[1:6]
         
         for book in similar_books:
