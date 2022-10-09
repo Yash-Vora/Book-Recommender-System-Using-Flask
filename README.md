@@ -1,5 +1,5 @@
 # Book Recommender System Using Flask
-This is Book Recommender System made using Flask Framework that is used to recommend books. Also deployed flask app on Heroku.
+This is Book Recommender System made using Flask Framework that is used to recommend books. Created CI/CD Pipeline where used Docker for containerizing the flask web app and deployed it on Heroku platform.
 
 ## Website Link
 Link: https://book-recommender-web-app.herokuapp.com/
@@ -42,3 +42,5 @@ Books Dataset - https://www.kaggle.com/datasets/saurabhbagchi/books-dataset
 - Flask
 - Pandas
 - Numpy
+- Docker
+- Heroku
