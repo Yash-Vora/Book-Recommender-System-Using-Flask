@@ -2,7 +2,7 @@
 This is Book Recommender System made using Flask Framework that is used to recommend books. Created CI/CD Pipeline where used Docker for containerizing the flask web app and deployed it on Heroku platform.
 
 ## Website Link
-Link: https://book-recommender-web-app.herokuapp.com/
+Link: https://book-recommender-web-app.herokuapp.com/ 
 
 ## Popularity based Recommendation System
 This recommendation system is used to show top 100 popular books.<br>
